@@ -9,11 +9,7 @@ print("""
     </head>
     <body>
         <div id="main_part">
-            <div id=""buttons">
-                <a href = "data_page.py">
-                    Посмотреть данные
-                </a>
-            </div>
+            Hello
         </div>
     </body>
 </html>
