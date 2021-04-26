@@ -5,13 +5,17 @@ print()
 print("""
 <html>
     <head>
+        <link href="../css/style.css" type="text/css" rel="stylesheet">
         <meta charset="utf-8">
     </head>
     <body>
         <div id="main_part">
-            <div id=""buttons">
-                <a href = "data_page.py">
+            <div id="buttons">
+                <a href = "data_page.py" style="margin-right: 1em;">
                     Посмотреть данные
+                </a>
+                <a href = "#">
+                    Ввести данные
                 </a>
             </div>
         </div>
