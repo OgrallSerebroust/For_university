@@ -10,7 +10,15 @@ print("""
     </head>
     <body>
         <div id="main_part">
-            Hello
+            <div id="visitors_data">
+                Hello
+            </div>
+            <div id="theatres_data">
+                Hello Hello
+            </div>
+            <div id="shows_data">
+                Hello Hello Hello
+            </div>
         </div>
     </body>
 </html>

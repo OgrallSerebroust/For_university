@@ -3,6 +3,7 @@ body
     padding: 0;
     margin: 0;
     background: url("../source/img/background.jpg");
+    color: #FFFFFF;
 }
 
 #main_part
@@ -21,7 +22,7 @@ body
     display: inline-block;
 }
 
-#buttons > a
+#buttons > a, #buttons_of_bad_page > a
 {
     padding: 1em 2em;
     text-decoration: none;
@@ -32,8 +33,54 @@ body
     -webkit-border-radius: 5px;
 }
 
-#buttons > a:hover
+#buttons > a:hover, #buttons_of_bad_page > a:hover
 {
     background-color: #CCCCCC;
     color: #222222;
+}
+
+#main_part_of_bad_page
+{
+    height: 59.7em;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#text_complete
+{
+    text-align: center;
+    width: max-content;
+    margin: 0 auto 1.5em;
+    padding-top: 25em;
+}
+
+#buttons_of_bad_page
+{
+    width: max-content;
+    margin: 0 auto;
+}
+
+#form_of_theatres
+{
+    border: 1px solid #FF0000;
+}
+
+#form_of_shows
+{
+    border: 1px solid #00FF00;
+}
+
+#form_of_visitors
+{
+    border: 1px solid #0000FF;
+}
+
+.forms
+{
+    width: 33.3%;
+    padding: 1em 2em;
+}
+
+.forms > form > input
+{
+    width: 100%;
 }

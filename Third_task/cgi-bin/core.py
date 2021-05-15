@@ -14,7 +14,7 @@ print("""
                 <a href = "data_page.py" style="margin-right: 1em;">
                     Посмотреть данные
                 </a>
-                <a href = "#">
+                <a href = "insert_page.py">
                     Ввести данные
                 </a>
             </div>
