@@ -33,7 +33,7 @@ body
     -webkit-border-radius: 5px;
 }
 
-#buttons > a:hover, #buttons_of_bad_page > a:hover
+#buttons > a:hover, #buttons_of_bad_page > a:hover, #home_button > a:hover
 {
     background-color: #CCCCCC;
     color: #222222;
@@ -115,4 +115,26 @@ td
 thead
 {
     background: #000000;
+}
+
+#home_button
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3.2em;
+    text-align: center;
+}
+
+#home_button > a
+{
+    padding: 1em 2em;
+    display: inline-block;
+    width: 96.6%;
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #000000;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }

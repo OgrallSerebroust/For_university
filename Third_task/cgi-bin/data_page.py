@@ -15,6 +15,40 @@ def query_data_of_theatres(self):
         """)
 
 
+def query_data_of_shows(self):
+    for name, visitors, theatre in self.run("""MATCH (b: Show)-[r: Проводится]->(c: Theatre) RETURN b.name, b.visitors, c.name"""):
+        print("""
+                <tr>
+                    <td>
+                    """ + name + """                    
+                    </td>
+                    <td>
+                    """ + visitors + """
+                    </td>
+                    <td>
+                    """ + theatre + """
+                    </td>
+                </tr>
+        """)
+
+
+def query_data_of_visitors(self):
+    for name, age, show in self.run("""MATCH (d: Visitor)-[: Посетил]->(e: Show) RETURN d.name, d.age, e.name"""):
+        print("""
+                <tr>
+                    <td>
+                    """ + name + """
+                    </td>
+                    <td>
+                    """ + age + """
+                    </td>
+                    <td>
+                    """ + show + """
+                    </td>
+                </tr>
+        """)
+
+
 driver = GraphDatabase.driver("neo4j://localhost:7687", auth=("neo4j", "admin"))
 print("Content-type: text/html")
 print()
@@ -62,6 +96,10 @@ print("""
                         </tr>
                     </thead>
                     <tbody>
+""")
+with driver.session() as session:
+    session.read_transaction(query_data_of_shows)
+print("""
                     </tbody>
                 </table>
             </div>
@@ -76,17 +114,23 @@ print("""
                                 Возраст
                             </td>
                             <td>
-                                Какой театр посещал(а)
-                            </td>
-                            <td>
                                 Какое мероприятие посещал(а)
                             </td>
                         </tr>
                     </thead>
                     <tbody>
+""")
+with driver.session() as session:
+    session.read_transaction(query_data_of_visitors)
+print("""
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div id="home_button">
+            <a href="core.py">
+                На главную!
+            </a>
         </div>
     </body>
 </html>
