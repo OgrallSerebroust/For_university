@@ -2,21 +2,19 @@ from cgi import FieldStorage
 from neo4j import GraphDatabase
 
 our_data_from_form = FieldStorage()
-name_of_visitor = our_data_from_form.getfirst("name_of_visitor", "Не задано")
-age_of_visitor = our_data_from_form.getfirst("age_of_visitor", "Не задано")
+name_of_show = our_data_from_form.getfirst("name_of_show", "Не задано")
+how_many_visitors = our_data_from_form.getfirst("how_many_visitors", "Не задано")
 which_theatre = our_data_from_form.getfirst("which_theatre", "Не задано")
-which_show = our_data_from_form.getfirst("which_show", "Не задано")
 
 
-def add_friend(tx, name, age, theatre, show):
-    tx.run("MERGE (visitor: Visitor{name: $name, age: $age})", name=name, age=age)
-    tx.run("""MATCH (a: Visitor), (b: Theatre) WHERE a.name = $name AND b.name = $theatre CREATE (a)-[r: Посетитель]->(b);""", name=str(name), theatre=str(theatre))
-    tx.run("""MATCH (c: Visitor), (d: Show) WHERE c.name = $name AND d.name = $show CREATE (c)-[s: Посетил]->(d);""", name=name, show=show)
+def add_data_to_bd(self, name, visitors, which_theatre):
+    self.run("MERGE (show: Show{name: $name, visitors: $visitors})", name=name, visitors=visitors)
+    self.run("""MATCH (a: Show), (b: Theatre) WHERE a.name = $name AND b.name = $which_theatre CREATE (a)-[r: Проводится]->(b);""", name=name, which_theatre=which_theatre)
 
 
 driver = GraphDatabase.driver("neo4j://localhost:7687", auth=("neo4j", "admin"))
 with driver.session() as session:
-    session.write_transaction(add_friend, name_of_visitor, age_of_visitor, which_theatre, which_show)
+    session.write_transaction(add_data_to_bd, name_of_show, how_many_visitors, which_theatre)
 driver.close()
 print("Content-type: text/html")
 print()
