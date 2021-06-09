@@ -11,7 +11,7 @@ which_show = our_data_from_form.getfirst("which_show", "Не задано")
 def add_friend(tx, name, age, show):
     tx.run("MERGE (visitor: Visitor{name: $name, age: $age})", name=name, age=age)
     # tx.run("""MATCH (a: Visitor), (b: Theatre) WHERE a.name = $name AND b.name = $theatre CREATE (a)-[r: Посетитель]->(b);""", name=str(name), theatre=str(theatre))
-    tx.run("""MATCH (c: Visitor), (d: Show) WHERE c.name = $name AND d.name = $show CREATE (c)-[s: Посетил]->(d);""", name=name, show=show)
+    tx.run("""MATCH (c: Visitor), (d: Show) WHERE c.name = $name AND d.name = $show MERGE (c)-[s: Посетил]->(d);""", name=name, show=show)
 
 
 driver = GraphDatabase.driver("neo4j://localhost:7687", auth=("neo4j", "admin"))

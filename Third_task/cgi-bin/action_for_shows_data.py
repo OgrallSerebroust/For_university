@@ -9,7 +9,7 @@ which_theatre = our_data_from_form.getfirst("which_theatre", "Не задано"
 
 def add_data_to_bd(self, name, visitors, which_theatre):
     self.run("MERGE (show: Show{name: $name, visitors: $visitors})", name=name, visitors=visitors)
-    self.run("""MATCH (a: Show), (b: Theatre) WHERE a.name = $name AND b.name = $which_theatre CREATE (a)-[r: Проводится]->(b);""", name=name, which_theatre=which_theatre)
+    self.run("""MATCH (a: Show), (b: Theatre) WHERE a.name = $name AND b.name = $which_theatre MERGE (a)-[r: Проводится]->(b);""", name=name, which_theatre=which_theatre)
 
 
 driver = GraphDatabase.driver("neo4j://localhost:7687", auth=("neo4j", "admin"))
