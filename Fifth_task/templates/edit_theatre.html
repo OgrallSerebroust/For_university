@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}
+    Редактирование записи
+{% endblock %}
+{% block main_part_of_page %}
+    <div class="vh-100 container-fluid" id="main_part">
+        <form method="POST">
+            {% csrf_token %}
+            <p>
+                <label>Новое название</label><br>
+                <input type="text" name="name" value="{{theatre.name}}" />
+            </p>
+            <p>
+                <label>Новое местоположение</label><br>
+                <input type="text" name="place" value="{{theatre.place}}" />
+            </p>
+            <input type="submit" value="Сохранить" >
+    </form>
+    </div>
+{% endblock %}

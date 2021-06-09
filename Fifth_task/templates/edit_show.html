@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+    Редактирование записи
+{% endblock %}
+{% block main_part_of_page %}
+    <div class="vh-100 container-fluid" id="main_part">
+        <form method="POST">
+            {% csrf_token %}
+            <p>
+                <label>Новое название</label><br>
+                <input type="text" name="name" value="{{show.name}}" />
+            </p>
+            <p>
+                <label>Новое количество посетителей</label><br>
+                <input type="text" name="visitors" value="{{show.visitors}}" />
+            </p>
+            <p>
+                <label>Новое место проведения</label><br>
+                <input type="text" name="theatre" value="{{show.theatre}}" />
+            </p>
+            <input type="submit" value="Сохранить" >
+    </form>
+    </div>
+{% endblock %}

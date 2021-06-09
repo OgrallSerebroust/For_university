@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+    Редактирование записи
+{% endblock %}
+{% block main_part_of_page %}
+    <div class="vh-100 container-fluid" id="main_part">
+        <form method="POST">
+            {% csrf_token %}
+            <p>
+                <label>Новое Ф.И.О.</label><br>
+                <input type="text" name="name" value="{{visitor.name}}" />
+            </p>
+            <p>
+                <label>Новый возраст</label><br>
+                <input type="text" name="age" value="{{visitor.age}}" />
+            </p>
+            <p>
+                <label>Новый мероприятие где присутствовал(а)</label><br>
+                <input type="text" name="show" value="{{visitor.show}}" />
+            </p>
+            <input type="submit" value="Сохранить" >
+    </form>
+    </div>
+{% endblock %}

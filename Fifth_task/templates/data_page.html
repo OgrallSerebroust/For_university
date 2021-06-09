@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block title %}
+    Посмотреть данные
+{% endblock %}
+{% block main_part_of_page %}
+    <div class="vh-100 container-fluid" id="main_part">
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Название театра
+                    </th>
+                    <th scope="col">
+                        Местоположение театра
+                    </th>
+                    <th scope="col">
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for theatre in theatres %}
+                    <tr>
+                        <td>
+                            {{ theatre.name }}
+                        </td>
+                        <td>
+                            {{ theatre.place }}
+                        </td>
+                        <td>
+                            <a href="edit_theatre/{{theatre.id}}">
+                                Изменить
+                            </a>
+                            <a href="delete_theatre/{{theatre.id}}">
+                                Удалить
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Название мероприятия
+                    </th>
+                    <th scope="col">
+                        Количество посетителей
+                    </th>
+                    <th scope="col">
+                        В каком театре проводится
+                    </th>
+                    <th scope="col">
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for show in shows %}
+                    <tr>
+                        <td>
+                            {{ show.name }}
+                        </td>
+                        <td>
+                            {{ show.visitors }}
+                        </td>
+                        <td>
+                            {{ show.theatre }}
+                        </td>
+                        <td>
+                            <a href="edit_show/{{show.id}}">
+                                Изменить
+                            </a>
+                            <a href="delete_show/{{show.id}}">
+                                Удалить
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Ф.И.О.
+                    </th>
+                    <th scope="col">
+                        Возраст
+                    </th>
+                    <th scope="col">
+                        Какое мероприятие посещал(а)
+                    </th>
+                    <th scope="col">
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for visitor in visitors %}
+                    <tr>
+                        <td>
+                            {{ visitor.name }}
+                        </td>
+                        <td>
+                            {{ visitor.age }}
+                        </td>
+                        <td>
+                            {{ visitor.show }}
+                        </td>
+                        <td>
+                            <a href="edit_visitor/{{visitor.id}}">
+                                Изменить
+                            </a>
+                            <a href="delete_visitor/{{visitor.id}}">
+                                Удалить
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div id="home_button">
+        <a href="/">
+            На главную!
+        </a>
+    </div>
+{% endblock %}
