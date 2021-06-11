@@ -32,24 +32,27 @@ def get_visitors_data():
 def dump_theatres(theatres_data, main):
     theater = etree.SubElement(main, "theaters")
     for row in theatres_data:
+        row_in_table = etree.SubElement(theater, "row_" + str(row["id"]))
         for key in row.keys():
-            theater_item = etree.SubElement(theater, key)
+            theater_item = etree.SubElement(row_in_table, key)
             theater_item.text = str(row[key])
 
 
 def dump_shows(shows_data, main):
     show = etree.SubElement(main, "shows")
     for row in shows_data:
+        row_in_table = etree.SubElement(show, "row_" + str(row["id"]))
         for key in row.keys():
-            show_item = etree.SubElement(show, key)
+            show_item = etree.SubElement(row_in_table, key)
             show_item.text = str(row[key])
 
 
 def dump_visitors(visitors_data, main):
     visitor = etree.SubElement(main, "visitors")
     for row in visitors_data:
+        row_in_table = etree.SubElement(visitor, "row_" + str(row["id"]))
         for key in row.keys():
-            visitor_item = etree.SubElement(visitor, key)
+            visitor_item = etree.SubElement(row_in_table, key)
             visitor_item.text = str(row[key])
 
 
